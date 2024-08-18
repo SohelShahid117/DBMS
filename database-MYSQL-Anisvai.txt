@@ -1,0 +1,208 @@
+//https://youtu.be/aZnwpMON0NA?si=dwcWhqT4PiRxPTAq-->3:03 min done
+1.SHOW DATABASES
+2.CREATE DATABASE college;
+3.DROP DATABASE college;
+
+4.Numeric datatype-->
+a.SMALLINT
+b.INT
+c.BIGINT
+d.FLOAT
+e.DOUBLE(M,D)-->M for total digit,D for doshomiker por koi digit takbe seta
+f.DECIMAL(M,D)
+
+5.Character Type
+a.Char(m)-->m for koiti charecter rakbo
+b.Varchar(m)
+c.text
+
+6.date & time data type
+a.YEAR(YYYY)
+b.DATE(YYYY-MM-DD)
+c.TIME(HH:MM:SS)
+
+7.make a table in database-->
+CREATE TABLE StudentInfo
+(
+    Roll int(5),
+    Name varchar(20),
+    Gender varchar(10),
+    Age int(5),
+    GPA double(3,2),
+    City varchar(10),
+    PRIMARY KEY(Roll)
+);
+
+8.RENAME TABLE studentinfo to StudentDetails;
+9.DROP TABLE studentdetails;
+
+10.
+INSERT INTO studentdetails
+(Roll,Name,Gender,Age,GPA,City)
+VALUES (101,"sohel","male","34",2.83,"ctg");
+
+11.
+INSERT INTO studentdetails
+VALUES (102,"Sumi","Female","33",3.83,"ctg");
+
+12.
+INSERT INTO studentdetails
+VALUES 
+(107,"Adil","male","3",4.00,"ctg"),
+(104,"Tuhin","Fmale","22",3.50,"ctg"),
+(105,"Shahin","Female","25",3.00,"ctg"),
+(106,"Koohinur","Female","29",3.00,"ctg");
+
+13.
+DDL-->Data Definition Language-->CREATE,ALTER,DROP
+DML-->Data Manipulation Language-->INSERT,SELECT,UPDATE,DELETE
+
+14.SELECT * FROM `studentdetails`
+15.SELECT Roll,Name,Gender FROM `studentdetails`;
+16.SELECT City FROM `studentdetails`
+17.SELECT DISTINCT City FROM `studentdetails`
+18.SELECT * FROM `studentdetails` LIMIT 5;-->prothom 5t dekabe
+19.SELECT * FROM `studentdetails` LIMIT 2,5;-->prothom 2t dekabena,porer 5t dekabe
+20.SELECT Name FROM `studentdetails` ORDER BY Name;-->ascending akare dekabe
+21.SELECT Name FROM `studentdetails` ORDER BY City;-->ascending akare dekabe
+22.SELECT Name FROM `studentdetails` ORDER BY GPA;-->ascending akare dekabe
+23.SELECT Roll,Name,City,GPA FROM `studentdetails` ORDER BY GPA;-->ascending akare dekabe
+
+24.SELECT Roll,Name,City,GPA FROM `studentdetails` ORDER BY GPA DESC;-->descending akare dekabe
+25.SELECT Roll,Name,Age FROM `studentdetails` ORDER BY Age,GPA DESC;-->descending akare dekabe
+
+26.ARITHMATIC OPERATOR:+,-,*,/,%
+a.SELECT 5+2;
+b.SELECT 5-2;
+c.SELECT 5*2;
+d.SELECT 5/2;
+e.SELECT 5%2;
+
+27.comparison operator:=,!=,>,>=,<,<=,BETWEEN
+28.Logical Operator:AND,OR,NOT,IN
+
+29.SELECT City  FROM `studentdetails` WHERE Gender="Female";
+30.SELECT City  FROM `studentdetails` WHERE Gender="Male";
+31.SELECT City,Name,GPA  FROM `studentdetails` WHERE GPA>=4;
+32.SELECT DISTINCT City,Name,GPA  FROM `studentdetails` WHERE GPA>=3.5;
+33.SELECT DISTINCT City,Name,GPA  FROM `studentdetails` WHERE GPA>=3.5 ORDER by GPA DESC;
+34.SELECT * FROM `studentdetails` WHERE Roll=105;
+
+35.Relational ooperator:
+36.SELECT * FROM `studentdetails` WHERE Roll BETWEEN 105 AND 110;
+37.SELECT * FROM `studentdetails` WHERE Roll !=105;
+
+38.SELECT * FROM `studentdetails` WHERE Gender="Male" OR GPA>=3.5;
+39.SELECT * FROM `studentdetails` WHERE Gender="Female" AND GPA>=3.5;
+
+40.SELECT * FROM `studentdetails` WHERE City="Ctg" AND (Gender="Female" AND GPA>=3.5);
+41.SELECT * FROM `studentdetails` WHERE City="Ctg" AND (Gender="Female" OR GPA>=3.5);
+42.SELECT * FROM `studentdetails` WHERE City IN("Dhaka","Ctg");-->onekgolo OR er poriborte IN use kora hoi
+
+43.SELECT * FROM `studentdetails` WHERE City NOT IN("Dhaka","Ctg");
+44.SELECT * FROM `studentdetails` WHERE Name LIKE "S%";//sorote S takbe
+45.SELECT * FROM `studentdetails` WHERE Name LIKE "%l"; //seshe l takbe
+
+46.SELECT * FROM `studentdetails` WHERE Name LIKE "%oh%"; //kono akjaigai oh ase
+47.SELECT * FROM `studentdetails` WHERE Name LIKE "%hi%"; //
+48.SELECT * FROM `studentdetails` WHERE Name LIKE "_o%"; //2nd charecter o related sob result dibe
+49.SELECT * FROM `studentdetails` WHERE Name LIKE "%i_"; //sesher dik teke 2nd charecter i related sob Name dekabe
+50.SELECT * FROM `studentdetails` WHERE Name LIKE "%i__";//sesher dik teke 3rd charecter i related sob Name dekabe
+51.SELECT Roll AS Id,Name AS "First Name" FROM `studentdetails` WHERE 1; //akane Roll er jaigai Id & Name er Jaigai "First Name dekabe"
+
+56.CREATE TABLE Teacher
+(
+    Id int,
+    Name varchar(15)
+);
+//database e Teacher name Table toiri kora hoyeche
+57.INSERT INTO teacher
+VALUES(101,"Sohel")
+
+58.
+INSERT INTO teacher
+VALUES
+(102,"Shahid"),
+(103,"Faisal")
+
+59.DROP TABLE teacher;
+60.
+CREATE TABLE teacher
+(
+    Id int NOT NULL AUTO_INCREMENT,
+    Name Varchar(15) NOT NULL,
+    Salary Double(10,3),
+    PRIMARY KEY(Id)
+);
+61.
+INSERT INTO teacher
+VALUES (100,"Kamal Hossen",35000);
+
+62.
+INSERT INTO teacher
+(Name,Salary)
+VALUES ("Sayed Hossen",40000);
+
+63.
+INSERT INTO teacher
+(Name,Salary)
+VALUES
+("Siddik Ahmed",30000),
+("Pinku sen",40000),
+("Towhidul Alam",38000);
+
+64.
+INSERT INTO teacher
+(Name)
+VALUES
+("Khorshedul Alam");
+
+65.
+UPDATE teacher SET Salary=28000
+WHERE Id=105;
+
+66.
+UPDATE teacher SET Salary = 45000
+WHERE id=103;
+
+67.
+UPDATE teacher SET Name = "Sohel Shahid"
+WHERE id=102;
+
+68.DELETE FROM teacher WHERE id=104;
+
+69.DELETE FROM teacher WHERE id>102;
+
+70.
+UPDATE teacher SET Salary = Salary + 2000
+WHERE Salary>=40000;
+
+71.SELECT UPPER ("hello");
+72.SELECT LOWER ("hELLO");
+73.SELECT UPPER(Name) FROM teacher;
+74.SELECT UPPER(Name) as Nam FROM teacher;
+
+75.SELECT concat("hello","world");
+76.SELECT concat (Name," is ",Age," years old.") FROM studentdetails;
+77.SELECT greatest(4,5,6,7,1,2,3);
+78.SELECT LEAST(4,5,6,7,1,2,3);
+79.SELECT POW(2,5)
+80.SELECT log(10);
+81.SELECT log10(10);
+82.SELECT TRUNCATE (10.256789122,2);
+83.SELECT TRUNCATE(log(2),3);
+84.SELECT rand();
+85.SELECT rand()*5;
+86.SELECT exp(3);
+
+87.DESCRIBE studentdetails;
+88.SELECT MAX(GPA) FROM studentdetails;
+89.SELECT Min(GPA) FROM studentdetails;
+90.SELECT COUNT(*) AS NumberOfRows FROM studentdetails;
+91.SELECT COUNT(*) FROM `studentdetails` WHERE 1
+92.SELECT AVG(Salary) FROM `teacher`;
+93.SELECT SUM(Salary) FROM teacher;
+94.SELECT SUM(Salary),COUNT(Salary),AVG(Salary) FROM teacher;
+95.SELECT SUM(Salary),COUNT(Salary),AVG(Salary),MAX(Salary),MIN(Salary),COUNT(*) FROM teacher;
+96.SELECT SUM(age),COUNT(Age),AVG(Age),SUM(GPA),COUNT(GPA),AVG(GPA),MAX(GPA),MIN(GPA),COUNT(*) FROM studentdetails;
+97.SELECT MAX(GPA),MIN(GPA),COUNT(*) FROM studentdetails WHERE Gender="Female";
