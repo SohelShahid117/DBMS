@@ -1,4 +1,4 @@
-//https://youtu.be/aZnwpMON0NA?si=dwcWhqT4PiRxPTAq-->3:03 min done
+//https://youtu.be/aZnwpMON0NA?si=dwcWhqT4PiRxPTAq-->done
 1.SHOW DATABASES
 2.CREATE DATABASE college;
 3.DROP DATABASE college;
@@ -199,10 +199,135 @@ WHERE Salary>=40000;
 88.SELECT MAX(GPA) FROM studentdetails;
 89.SELECT Min(GPA) FROM studentdetails;
 90.SELECT COUNT(*) AS NumberOfRows FROM studentdetails;
+
 91.SELECT COUNT(*) FROM `studentdetails` WHERE 1
 92.SELECT AVG(Salary) FROM `teacher`;
 93.SELECT SUM(Salary) FROM teacher;
+
 94.SELECT SUM(Salary),COUNT(Salary),AVG(Salary) FROM teacher;
 95.SELECT SUM(Salary),COUNT(Salary),AVG(Salary),MAX(Salary),MIN(Salary),COUNT(*) FROM teacher;
 96.SELECT SUM(age),COUNT(Age),AVG(Age),SUM(GPA),COUNT(GPA),AVG(GPA),MAX(GPA),MIN(GPA),COUNT(*) FROM studentdetails;
 97.SELECT MAX(GPA),MIN(GPA),COUNT(*) FROM studentdetails WHERE Gender="Female";
+
+98.SELECT Name,Department,Salary FROM teachers_details WHERE Salary > (SELECT AVG(Salary) FROM teachers_details);
+99.ALTER TABLE `teachers_details`
+ADD Remarks varchar(20);
+100.
+ALTER TABLE teachers_details
+CHANGE Department Dept text(10);
+
+101.ALTER  TABLE teachers_details
+DROP Gender;
+
+102.UPDATE teachers_details 
+set Remarks="good" WHERE id=101;
+103.
+UPDATE teachers_details 
+set Remarks="very good" WHERE id % 2 !=0;
+
+104.
+UPDATE teachers_details 
+set Remarks="good" WHERE id % 2 =0;
+
+105.
+SELECT Dept,SUM(Salary)
+FROM teachers_details
+GROUP BY Dept;
+
+106.
+TRUNCATE TABLE teachers_details;
+107.CREATE TABLE Exam_Result
+(Reg_Number int(5),
+ Roll int(5),
+ GPA double(3,2),
+ Dept varchar(10)
+);
+
+108.
+INSERT INTO student_details
+VALUES
+(101,"rahim","male",18),
+(102,"rahima","female",17),
+(103,"sumi","female",19),
+(104,"sohel","male",20);
+
+109.
+INSERT INTO exam_result
+VALUES
+(20181,101,3.83,"EEE"),
+(20182,102,3.7,"ME"),
+(20183,103,3.43,"CE"),
+(20184,104,3.73,"CSE");
+
+110.
+SELECT student_details.Roll,Name,age,gender,Reg_Number,GPA,Dept
+FROM student_details,exam_result
+WHERE student_details.Roll = exam_result.Roll;
+
+111.
+SELECT student_details.Roll,Name,age,gender,Reg_Number,GPA,Dept
+FROM student_details,exam_result
+WHERE student_details.Roll = exam_result.Roll;
+
+112.
+SELECT SD.Roll,SD.Name,SD.age,SD.gender,
+ER.Reg_Number,ER.GPA,ER.Dept
+FROM student_details AS SD,exam_result AS ER
+WHERE SD.Roll = ER.Roll;
+
+113.
+SELECT SD.Roll,SD.Name,SD.age,SD.gender,
+ER.Reg_Number,ER.GPA,ER.Dept
+FROM student_details AS SD JOIN exam_result AS ER
+ON SD.Roll = ER.Roll;
+
+114.
+SELECT sd.Roll,sd.Name,sd.Gender,sd.Age,
+er.Reg_Number,er.Roll,er.GPA,er.Dept
+FROM student_details as SD INNER JOIN exam_result as ER
+ON sd.Roll = er.Roll
+
+115.
+SELECT sd.Roll,sd.Name,sd.Gender,sd.Age,
+er.Reg_Number,er.Roll,er.GPA,er.Dept
+FROM student_details as SD LEFT JOIN exam_result as ER
+ON sd.Roll = er.Roll
+
+116.
+SELECT sd.Roll,sd.Name,sd.Gender,sd.Age,
+er.Reg_Number,er.Roll,er.GPA,er.Dept
+FROM student_details as SD RIGHT JOIN exam_result as ER
+ON sd.Roll = er.Roll
+
+117.
+SELECT Roll,Name,Gender,Age FROM sylhet_tour
+UNION
+SELECT Roll,Name,Gender,Age FROM dhaka_tour;
+
+118.
+SELECT Roll,Name,Gender,Age FROM sylhet_tour
+UNION ALL
+SELECT Roll,Name,Gender,Age FROM dhaka_tour;
+
+
+119.
+CREATE VIEW 
+student_view as SELECT Roll,Name,Gender
+FROM student_details;
+
+120.
+UPDATE student_view SET Name="rrr" WHERE Roll=101;
+
+121.
+DELETE FROM student_view WHERE Roll=101;
+122.SELECT CURRENT_DATE()
+123.SELECT CURRENT_TIME()
+124.SELECT now()
+
+125.SELECT adddate("2018-5-6",INTERVAL 10 day); 
+126.SELECT adddate("2018-5-6",INTERVAL 5 month); 
+127.SELECT subdate("2018-5-6",INTERVAL 4 month);
+128.SELECT makedate(2018,122)
+129.SELECT dayname('217-5-24')
+130.SELECT monthname('217-5-24')
+131.SELECT DOB, dayname('DOB') FROM student_details
